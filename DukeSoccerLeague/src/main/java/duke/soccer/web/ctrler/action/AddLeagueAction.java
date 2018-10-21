@@ -1,0 +1,100 @@
+package duke.soccer.web.ctrler.action;
+
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+
+import duke.soccer.model.League;
+import duke.soccer.service.LeagueService;
+
+public class AddLeagueAction extends ActionSupport{
+	private String year;
+	private String season;
+	private String title;
+	private League league ;
+	private LeagueService leagueSrv;
+
+	public LeagueService getLeagueSrv() {
+		return leagueSrv;
+	}
+
+
+	public void setLeagueSrv(LeagueService leagueSrv) {
+		this.leagueSrv = leagueSrv;
+	}
+
+
+	public League getLeague() {
+		return league;
+	}
+//	private String[] seasons_list;
+//	public String[] getSeasons_list() {
+//		return seasons_list;
+//	}
+//	public void setSeasons_list(String[] season_list) {
+//		this.seasons_list = season_list;
+//	}
+
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public void setSeason(String season) {
+		this.season = season;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public AddLeagueAction() {
+		System.out.println("AddLeagueAction");
+//		ServletContext ctx = ServletActionContext.getServletContext();
+//		seasons_list = ctx.getInitParameter("seasons_list").split(",");
+	}
+
+	public String input() throws Exception {
+
+		return SUCCESS;
+	}
+
+	@Override
+	public void validate() {
+		System.out.println("in validate");
+		int year = -1 ;
+		try {
+			year = Integer.parseInt(this.year);
+		} catch ( Exception e ) {
+//			this.addActionError("The year must be number ...");
+			this.addFieldError("year", "The year must be number ...");
+		}
+		
+		if(year < 2018 || year > 2020) {
+			this.addFieldError("year", "The year must between 2018~2019");
+		}
+		if("UNKNOWN".equals(this.season)) {
+			this.addFieldError("season", "Please select a season...");
+		}
+		
+		if(this.title.length() == 0) {
+			this.addFieldError("title", "Please input your team name...");
+		}
+	}
+	@Override
+	public String execute() throws Exception {
+
+		int year = Integer.parseInt(this.year);
+		league = leagueSrv.createLeague(year, season, title);
+		return SUCCESS;
+	}
+
+}

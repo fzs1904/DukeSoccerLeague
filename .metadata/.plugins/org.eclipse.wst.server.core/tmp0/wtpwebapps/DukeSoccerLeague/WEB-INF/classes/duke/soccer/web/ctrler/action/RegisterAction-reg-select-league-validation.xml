@@ -1,0 +1,21 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+ 
+<validators>
+    <field name="league.year">
+    	<field-validator type="required">
+    		<message>You must input a value.</message>
+    	</field-validator>
+    	<field-validator type="int">
+    		<param name="min">2018</param>
+    		<param name="max">2020</param>
+    		<message>The 'year' field must within 2018 to 2020.</message>
+    	</field-validator>
+    </field>
+    <field name="league.season">
+    	<field-validator type="regex">
+    		<param name="regexExpression">Spring|Summer|Autumn|Winter</param>
+    		<message>Please select a league season.</message>
+    	</field-validator>
+    </field>
+</validators>

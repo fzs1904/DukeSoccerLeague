@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.objectFactory" 
+	value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+	
+	<package name="basicstruts2" extends="struts-default" strict-method-invocation="false">
+		<interceptors>
+			<interceptor name="leagueFormInterceptor" 
+			class="duke.soccer.web.interceptor.LeagueFormInterceptor"/>
+			<interceptor-stack name="myLeagueFormInterceptors">
+				<interceptor-ref name="leagueFormInterceptor"/>
+				<!-- 帶入struts-default的defaultStack -->
+				<interceptor-ref name="defaultStack">
+					<param name="validation.excludeMethods">
+					input,back,cancel,browse,entry
+					</param>
+				</interceptor-ref>
+			</interceptor-stack>	
+		</interceptors>
+		<action name="list_leagues"
+		  class="listLeaguesAction">
+		  	<result name="success">/jsp/list_leagues.jsp</result>
+		</action>
+      <action name="add_league_form" 
+          class="addLeagueAction"
+          method="input">
+          	<interceptor-ref name="myLeagueFormInterceptors" />
+            <result name="success">/jsp/add_league.jsp</result>
+        </action>
+        
+        <action name="add_league" 
+          class="addLeagueAction">
+          	<interceptor-ref name="myLeagueFormInterceptors" />
+          	<result name="input">/jsp/add_league.jsp</result>
+            <result name="success">/jsp/success.jsp</result>
+        </action>
+		<action name="reg_*"
+		class="duke.soccer.web.ctrler.action.RegisterAction" method="{1}">
+			<interceptor-ref name="myLeagueFormInterceptors"/>
+		    <result name="input">/jsp/reg_{1}.jsp</result>
+            <result name="entry_next">/jsp/reg_select_league.jsp</result>
+			<result name="select_league_next">/jsp/reg_enter_player.jsp</result>
+			<result name="enter_player_next">/jsp/reg_select_division.jsp</result>
+			<result name="select_division_next">/jsp/reg_thank_you.jsp</result>
+		</action>
+	</package>
+</struts>

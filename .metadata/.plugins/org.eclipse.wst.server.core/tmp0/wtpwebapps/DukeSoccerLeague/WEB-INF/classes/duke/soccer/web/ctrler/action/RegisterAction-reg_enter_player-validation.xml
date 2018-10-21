@@ -1,0 +1,30 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+ 
+<validators>
+    <field name="player.name">
+    	<field-validator type="requiredstring">
+    		<message>You must enter your fill name.</message>
+    	</field-validator>
+    </field>
+    <field name="player.address">
+    	<field-validator type="requiredstring">
+    		<message>You must enter address.</message>
+    	</field-validator>
+    </field>
+    <field name="player.city">
+    	<field-validator type="requiredstring">
+    		<message>You must enter city.</message>
+    	</field-validator>
+    </field>
+    <field name="player.province">
+    	<field-validator type="requiredstring">
+    		<message>You must enter province.</message>
+    	</field-validator>
+    </field>
+    <field name="player.postalCode">
+    	<field-validator type="requiredstring">
+    		<message>You must enter postal code.</message>
+    	</field-validator>
+    </field>
+</validators>

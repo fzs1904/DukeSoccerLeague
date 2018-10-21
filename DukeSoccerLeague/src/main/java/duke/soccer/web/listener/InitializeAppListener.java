@@ -1,0 +1,36 @@
+package duke.soccer.web.listener;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import duke.soccer.service.LeagueService;
+import duke.soccer.service.PlayerService;
+import duke.soccer.service.RegisterService;
+
+public class InitializeAppListener implements ServletContextListener{
+
+	public void contextInitialized(ServletContextEvent event) {
+//		System.out.println("APPListener");
+//		ServletContext ctx = event.getServletContext();
+//		LeagueService leagueSvc = new LeagueService();
+//		PlayerService playerSvc = new PlayerService();
+//
+//		
+//		RegisterService registerSvc = new RegisterService();
+//		registerSvc.setLeagueSvc(leagueSvc);
+//		registerSvc.setPlayerSvc(playerSvc);
+//		
+//		ctx.setAttribute("leagueSvc", leagueSvc);
+//		ctx.setAttribute("playerSvc", playerSvc);
+//		ctx.setAttribute("registerSvc", registerSvc);
+				
+	}
+
+	public void contextDestroyed(ServletContextEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

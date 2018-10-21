@@ -1,0 +1,5 @@
+1	2003	Spring	Avatar 
+2	2003	Summer	Spider
+3	2003	Autumn	Shark
+4	2004	Spring	Kitty
+5	2005	Summer	Pirate

@@ -1,0 +1,5 @@
+INDEX VERSION 1.130
+D:\產學\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1217658308.index
+\DukeSoccerLeague\src\main\resources
+D:\產學\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3616600912.index
+\DukeSoccerLeague\src\main\java
