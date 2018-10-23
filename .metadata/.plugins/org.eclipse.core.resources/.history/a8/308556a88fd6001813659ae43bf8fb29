@@ -1,0 +1,27 @@
+package duke.soccer.web.ctrler.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import duke.soccer.model.League;
+import duke.soccer.model.Player;
+
+@Controller
+public class RegisterController {
+	private League league;
+	private Player player;
+	private String division;
+	@Autowired
+	private List seasons_list;
+	
+	@RequestMapping("/reg_entry")
+	public String entry(Model models)	
+	{
+		models.addAttribute("seasons_list",seasons_list);
+		return "reg_select_league";	
+	}
+}

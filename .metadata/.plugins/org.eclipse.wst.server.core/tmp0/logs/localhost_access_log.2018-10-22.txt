@@ -7,3 +7,11 @@
 0:0:0:0:0:0:0:1 - - [22/Oct/2018:00:02:40 +0800] "GET /DukeSoccerLeague/ HTTP/1.1" 404 1093
 127.0.0.1 - - [22/Oct/2018:00:03:12 +0800] "GET / HTTP/1.1" 404 1076
 127.0.0.1 - - [22/Oct/2018:00:03:12 +0800] "GET /DukeSoccerLeague/ HTTP/1.1" 404 1093
+127.0.0.1 - - [22/Oct/2018:00:03:31 +0800] "GET / HTTP/1.1" 404 1076
+127.0.0.1 - - [22/Oct/2018:00:03:32 +0800] "GET /DukeSoccerLeague/ HTTP/1.1" 200 728
+127.0.0.1 - - [22/Oct/2018:00:03:38 +0800] "GET /DukeSoccerLeague/add_league_form HTTP/1.1" 200 1804
+127.0.0.1 - - [22/Oct/2018:00:03:42 +0800] "GET /DukeSoccerLeague/reg_entry HTTP/1.1" 200 2089
+127.0.0.1 - - [22/Oct/2018:00:03:46 +0800] "GET /DukeSoccerLeague/list_leagues HTTP/1.1" 200 930
+127.0.0.1 - - [22/Oct/2018:00:03:48 +0800] "GET /DukeSoccerLeague/reg_entry HTTP/1.1" 200 2089
+127.0.0.1 - - [22/Oct/2018:00:03:49 +0800] "POST /DukeSoccerLeague/reg_select_league.action HTTP/1.1" 200 2646
+127.0.0.1 - - [22/Oct/2018:00:03:50 +0800] "POST /DukeSoccerLeague/reg_enter_player.action HTTP/1.1" 200 3478

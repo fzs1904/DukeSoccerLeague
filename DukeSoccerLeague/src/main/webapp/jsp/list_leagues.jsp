@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@taglib uri="/struts-tags" prefix="s" %>
+
 <%-- Generate the HTML response --%>
 <html>
 	<head>
@@ -21,18 +21,9 @@
 	</p>
 
 <ul>
-
-    <s:iterator value="leagueList" var="league" status="loopStatus">
-        <s:if test = "#loopStatus.odd">
-    		<s:set var="color" value="'#DCDCDC'"/>
-    	</s:if>
-    	<s:else>
-    		<s:set var="color" value="'F8F8F8'"/>
-    	</s:else>
-    	<li style="background-color:<s:property value='color'/>" >
-    	${league.title}(${league.year},${league.season})
-    	</li>
-    </s:iterator>
+    <c:forEach items="${leagueList}" var="league">
+        <li>${league.title} (${league.year},${league.season})</li>
+    </c:forEach>
 </ul>
 
 	</body>

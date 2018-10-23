@@ -1,0 +1,48 @@
+package duke.soccer.web.ctrler.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import duke.soccer.model.League;
+import duke.soccer.model.Player;
+import duke.soccer.service.LeagueService;
+
+@Controller
+public class RegisterController {
+	private League league;
+	private Player player;
+	private String division;
+	List<String>errorMsgs=new ArrayList<String>();
+	@Autowired
+	private List seasons_list;
+	@Autowired
+	private LeagueService leagueService;
+	@RequestMapping("/reg_entry")
+	public String entry(Model models)	
+	{
+		models.addAttribute("seasons_list",seasons_list);
+		return "reg_select_league";	
+	}
+	@RequestMapping(name="/reg_select_league",method=RequestMethod.POST)
+	public String selectLeague(Model models,
+			@RequestParam int year,
+			@RequestParam String season)	
+	{
+		try {
+			league = leagueService.getLeague(year, season);
+			return "reg_enter_player";
+		} catch (Exception e) {
+			errorMsgs.add("league not find");
+			models.addAttribute("errorMsgs",errorMsgs);
+			return "reg_select_league";
+		}
+		
+	}
+}

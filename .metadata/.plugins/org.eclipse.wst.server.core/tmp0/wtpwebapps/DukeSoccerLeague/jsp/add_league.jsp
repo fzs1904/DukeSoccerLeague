@@ -1,11 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <%-- Generate the HTML response --%>
 <html>
 	<head>
 	  <title>Duke's Soccer League: Add a New League</title>
-	  <s:head />
-	  
 	</head>
 	<body bgcolor='white'>
 	
@@ -18,22 +16,39 @@
 	</table>
 	
 	<%-- Report any errors (if any) --%>
-	<s:actionerror/>
+	<c:forEach items="${errorMsgs}" var="errorMsg">
+		<b><font color="red">${errorMsg}</font></b><br/>
+	</c:forEach>
 	
 	<%-- Generate main body --%>
 	<p>
 	This form allows you to create a new soccer league.
 	</p>
-
-		<s:form action="add_league" method="POST">
-			<s:textfield name="year" label="Year"/>
-			<s:select list="seasons_list"
-				name="season" label="Season"
-				headerKey="UNKNOWN"
-				headerValue="UNKNOWN"/>	
-			<s:textfield name="title" label="Title"/>
-			<s:submit value="Add League"/>
-		</s:form>
+	<c:url value="/add_league.do" var="actionURL"/>
+	<form action="${actionURL}" method="POST" >
+	    <%-- Repopulate the year field --%>
+	    Year: <input type="text" name="year" value="${param.year}"/>
+	    <br/><br/>
+	    
+	    <%-- Repopulate the season drop-down menu --%>
+	    Season:
+	    <select name='season'>
+    		<option value="UNKNOWN">UNKNOWN</option>
+            <c:forEach var="season" items="${seasons_list}" >
+            	<c:if test="${season eq param.season}">
+            		<c:set var="selected" value="selected"/>
+            	</c:if>
+                <option value="${season}" ${selected}>${season}</option>
+            </c:forEach>
+	    </select>
+	    <br/><br/>
+	    
+	    <%-- Repopulate the title field --%>
+	    Title: <input type="text" name="title" value="${param.title}"/>
+	    <br/><br/>
+	    <%-- The submit button --%>
+	    <input type="submit" value="Add League" />
+	</form>
 	
 	</body>
 </html>

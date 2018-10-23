@@ -24,12 +24,19 @@ public class LeagueService {
 		return leagues;
 	}
 
-	public League getLeague(int year, String season) throws ObjectNotFoundException {
+	public League getLeague(int year, String season) throws Exception {
+		League league=null;
+		try {
+			JpaUtils.getEntityManager().getTransaction().begin();
+			league = leagueDao.findByYearAndSeason(year, season);
+			JpaUtils.getEntityManager().getTransaction().commit();
+			
+		} catch (Exception e) {
+			JpaUtils.getEntityManager().getTransaction().rollback();
 
-		JpaUtils.getEntityManager().getTransaction().begin();
-		League league = leagueDao.findByYearAndSeason(year, season);
-		JpaUtils.getEntityManager().getTransaction().commit();
-		return league;
+			throw e;
+		}
+			return league;
 	}
 
 	public League createLeague(int year, String season, String title) {

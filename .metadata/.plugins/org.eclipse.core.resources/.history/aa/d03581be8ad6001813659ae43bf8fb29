@@ -1,0 +1,5 @@
+package duke.soccer.web.ctrler.controller;
+
+public class RegisterController {
+
+}

@@ -46,11 +46,17 @@ public class PlayerService {
     /**
      * This method adds a new Player object.
      */
-    public void save(Player player) {
-    	JpaUtils.getEntityManager().getTransaction().begin();
-    	playerDao.create(player);
-    	JpaUtils.getEntityManager().getTransaction().commit();
-    }
+    public void save(Player player) throws Exception{
+    	try {
+    		JpaUtils.getEntityManager().getTransaction().begin();
+        	playerDao.create(player);
+        	JpaUtils.getEntityManager().getTransaction().commit();
+        
+		} catch (Exception e) {
+			JpaUtils.getEntityManager().getTransaction().rollback();
+			throw e;
+		}
+    	}
     
     
 }

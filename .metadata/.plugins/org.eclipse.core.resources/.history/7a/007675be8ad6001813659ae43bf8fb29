@@ -1,0 +1,28 @@
+package duke.soccer.web.ctrler.controller;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import duke.soccer.model.League;
+import duke.soccer.service.LeagueService;
+
+public class ListLeaguesController implements Controller{
+	private LeagueService leagueSrv;
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<League> leagueList = leagueSrv.getAllLeagues();
+		ModelAndView mv = new ModelAndView("list_leagues","leagueList",leagueList);
+		
+		return mv;
+	}
+	public LeagueService getLeagueSrv() {
+		return leagueSrv;
+	}
+	public void setLeagueSrv(LeagueService leagueSrv) {
+		this.leagueSrv = leagueSrv;
+	}
+
+}

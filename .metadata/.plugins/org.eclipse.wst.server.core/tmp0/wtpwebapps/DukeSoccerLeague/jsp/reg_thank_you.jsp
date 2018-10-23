@@ -15,7 +15,7 @@
 	
 		<%-- Present the main body --%>
 		<p>
-		Thank you, ${player.name}, for register for the <i>${league.year}${league.season}</i>.
+		Thank you, ${player.name}, for register for the <i>${league.title}</i> league.
 		</p>
 	
 	</body>

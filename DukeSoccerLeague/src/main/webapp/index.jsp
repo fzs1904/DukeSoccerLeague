@@ -20,8 +20,8 @@ This is the Home page for Duke's Soccer League.
 <h3>Players</h3>
 
 <ul>
-  <li><a href='list_leagues'>List all leagues</a></li>
-  <li><a href='reg_entry'>Register for a league</a></li>
+  <li><a href='list_leagues.do'>List all leagues</a></li>
+  <li><a href='reg_entry.do'>Register for a league</a></li>
 </ul>
 
 
@@ -29,7 +29,7 @@ This is the Home page for Duke's Soccer League.
 
 <ul>
   <!--<li><a href='jsp/add_league.jsp'>Add a new league</a></li>-->
-  <li><a href='add_league_form'>Add a new league</a></li>
+  <li><a href='add_league_form.do'>Add a new league</a></li>
 </ul>
 
 </body>

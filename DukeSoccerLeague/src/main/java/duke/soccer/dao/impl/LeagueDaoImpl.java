@@ -26,7 +26,7 @@ public class LeagueDaoImpl implements LeagueDao{
 		return JpaUtils.getEntityManager().find(League.class, id);
 	}
 	
-	public League findByYearAndSeason(int year, String season) {
+	public League findByYearAndSeason(int year, String season) throws Exception{
 		League league
 		= JpaUtils.getEntityManager()
 		  .createQuery("select l from League l where l.year = :inputYear and "

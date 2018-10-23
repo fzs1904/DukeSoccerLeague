@@ -23,7 +23,7 @@ public class RegisterService {
     }
     
 
-    public League getLeague(int year, String season) throws ObjectNotFoundException {        
+    public League getLeague(int year, String season)throws Exception {        
         return leagueSrv.getLeague(year, season);
     }
     
@@ -36,13 +36,18 @@ public class RegisterService {
      * This method stores the registration information for the player,
      * based on the league and division information.
      */
-    public void register(League league, Player player, String division) {
-        
+    public void register(League league, Player player, String division) throws Exception{
+        try {
         playerSrv.save(player);
         JpaUtils.getEntityManager().getTransaction().begin();
         registerDao.register(league, player, division);
         JpaUtils.getEntityManager().getTransaction().commit();
-    }
+        }
+        catch(Exception e){
+        	JpaUtils.getEntityManager().getTransaction().rollback();
+        	throw e;
+        }
+        }
 
 
 	public LeagueService getLeagueSrv() {

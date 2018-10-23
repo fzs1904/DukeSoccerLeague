@@ -1,0 +1,20 @@
+package duke.soccer.web.ctrler.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class AddLeagueController{
+	@RequestMapping("/add_league_form")
+	public ModelAndView input() {
+		String inputView = "add_league";
+		Map models = new HashMap();
+		ModelAndView mv = new ModelAndView(inputView,models);
+		return mv;
+	}
+}

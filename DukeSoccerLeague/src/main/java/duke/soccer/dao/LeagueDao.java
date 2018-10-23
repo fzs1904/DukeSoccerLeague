@@ -8,7 +8,7 @@ public interface LeagueDao {
 	League create(League league);
 	List<League> findAll();
     League get(int id);
-	League findByYearAndSeason(int year, String season);
+	League findByYearAndSeason(int year, String season)throws Exception;
 	void updateByYear(int year);
 	void deleteAll();
 }

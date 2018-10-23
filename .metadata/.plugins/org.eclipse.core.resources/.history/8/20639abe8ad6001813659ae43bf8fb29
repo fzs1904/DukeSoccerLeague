@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>DukeSoccerLeague</display-name>
+  <context-param>
+    <param-name>dataDirectory</param-name>
+    <param-value>/WEB-INF/data</param-value>
+  </context-param>
+   
+
+  <servlet>
+    <servlet-name>springFrontController</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/configs/*.spring.xml</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  	
+  <servlet-mapping>
+    <servlet-name>springFrontController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+<!--  
+  <listener>
+    <listener-class>duke.soccer.web.listener.InitializeAppListener</listener-class>
+  </listener>
+  -->
+
+  <servlet>
+    <servlet-name>ListLeagues</servlet-name>
+    <servlet-class>duke.soccer.web.ctrler.servlet.ListLeaguesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListLeagues</servlet-name>
+    <url-pattern>/list_leagues</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddLeague</servlet-name>
+    <servlet-class>duke.soccer.web.ctrler.servlet.AddLeagueServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddLeague</servlet-name>
+    <url-pattern>/add_league</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegSelectLeagueServlet</servlet-name>
+    <servlet-class>duke.soccer.web.ctrler.servlet.RegSelectLeagueServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegEnterPlayerServlet</servlet-name>
+    <servlet-class>duke.soccer.web.ctrler.servlet.RegEnterPlayerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegSelectDivisionServlet</servlet-name>
+    <servlet-class>duke.soccer.web.ctrler.servlet.RegSelectDivisionServlet</servlet-class>
+  </servlet>      
+  <servlet-mapping>
+    <servlet-name>RegSelectLeagueServlet</servlet-name>
+    <url-pattern>/reg_select_league</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegEnterPlayerServlet</servlet-name>
+    <url-pattern>/reg_enter_player</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegSelectDivisionServlet</servlet-name>
+    <url-pattern>/reg_select_division</url-pattern>
+  </servlet-mapping>    
+  <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

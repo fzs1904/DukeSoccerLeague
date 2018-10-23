@@ -1,11 +1,10 @@
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <%-- Generate the HTML response --%>
 <html>
 	<head>
 	  <title>${pageTitle}</title>
-	  <s:head/>
 	</head>
 	<body bgcolor='white'>
 	
@@ -35,16 +34,28 @@
 		<br/>
 		
 		<%-- Report any errors (if any) --%>
-		<s:actionerror/>
+		<c:if test="${not empty errorMsgs}">
+		  <p>
+		  <font color='red'>Please correct the following errors:
+		  <ul>
+		  <c:forEach var="message" items="${errorMsgs}">
+		    <li>${message}</li>
+		  </c:forEach>
+		  </ul>
+		  </font>
+		  </p>
+		</c:if>
 		
 		<%-- Present the form --%>
-		<s:form action="reg_enter_player" method="POST">
-			<s:textfield name="player.name" label="Name"/>
-			<s:textfield name="player.address" label="Address"/>
-			<s:textfield name="player.city" label="City"/>
-			<s:textfield name="player.province" label="Province"/>
-			<s:textfield name="player.postalCode" label="Postal Code"/>
-			<s:submit value="Continue..."/>
-		</s:form>
+		<c:url value="/reg_enter_player.do" var="actionURL"/>	
+		<form action='${actionURL}' method='POST'>
+			<%-- Repopulate the year field --%>
+			Name: <input type='text' name='name' value='${param.name}' /> <br/><br/>
+			Address: <input type='text' name='address' value='${param.address}' /> <br/><br/>
+			City: <input type='text' name='city' value='${param.city}' /> <br/><br/>
+			Province: <input type='text' name='province' value='${param.province}' /> <br/><br/>
+			Postal code: <input type='text' name='postalCode' value='${param.postalCode}' /> <br/><br/>
+			<input type='Submit' value='Continue...' />
+		</form>		
 	</body>
 </html>

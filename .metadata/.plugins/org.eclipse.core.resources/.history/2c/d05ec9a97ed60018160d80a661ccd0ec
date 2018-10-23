@@ -1,0 +1,6 @@
+package duke.soccer.web.ctrler.controller;
+import org.springframework.web.servlet.mvc.Controller;
+
+public class ListLeaguesController implements Controller{
+
+}

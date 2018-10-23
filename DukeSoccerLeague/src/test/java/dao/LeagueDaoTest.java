@@ -63,7 +63,7 @@ public class LeagueDaoTest {
 
 	}
 	@Test
-	public void getLeagueByYearAndSeason() {
+	public void getLeagueByYearAndSeason() throws Exception {
 		System.out.println("getLeagueByYearAndSeason");
 		League input = new League(2019,"Summer","Java Team");
 		leagueDao.create(input);
