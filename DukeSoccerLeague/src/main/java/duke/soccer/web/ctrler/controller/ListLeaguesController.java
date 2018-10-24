@@ -13,7 +13,7 @@ public class ListLeaguesController{
 	@Autowired
 	private LeagueService leagueSrv;
 	@RequestMapping("list_leagues")
-	public String showAll(Model model) 
+	public String showAll(Model model) throws Exception 
 	{
 		List<League> leagueList = leagueSrv.getAllLeagues();
 		model.addAttribute("leagueList",leagueList);

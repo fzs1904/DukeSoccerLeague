@@ -1,13 +1,26 @@
 package duke.soccer.dao.impl;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import duke.soccer.dao.RegisterDao;
 import duke.soccer.model.League;
 import duke.soccer.model.Player;
 import duke.soccer.model.Register;
 import duke.soccer.utils.JpaUtils;
-
+@Repository
 public class RegisterDaoImpl implements RegisterDao{
-
+	@Autowired
+	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplate;
 	public void register(League league, Player player, String division) {
 		Register register = new Register(league,player,division);
 		JpaUtils.getEntityManager().persist(register);
@@ -17,5 +30,19 @@ public class RegisterDaoImpl implements RegisterDao{
 		JpaUtils.getEntityManager().createQuery("delete from Register r")
 		.executeUpdate();
 	}
-
+	public List<Register> findRegisterByLeagueId(Integer leagueId){
+		String sql = "select * from register where league_id=?";
+		List<Map<String,Object>> rows=jdbcTemplate.queryForList(sql,new Object[] {leagueId});
+		List<Register>results = new ArrayList<Register>();
+		for(Map<String, Object> row:rows) {
+			Register register 
+			=findById(Integer.parseInt(row.get("register_id").toString()));
+		}
+		
+		return results;
+		
+	}
+	public Register findById(Integer registerId) {
+		return JpaUtils.getEntityManager().find(Register.class, registerId);
+	}
 }

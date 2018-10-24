@@ -1,0 +1,5 @@
+package duke.soccer.dao.impl;
+
+public class LeagueRowMapper {
+
+}

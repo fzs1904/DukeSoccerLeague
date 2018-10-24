@@ -34,7 +34,7 @@ public class LeagueDaoTest {
 	public void testCreateLeague() throws Exception {
 		System.out.println("testCreateLeague");
 		League league = new League(2018, "Winter", "Code A");
-		leagueDao.create(league);
+		leagueDao.createJdbc(2018, "Winter", "Code A");
 	}
 
 	@Test
@@ -42,9 +42,9 @@ public class LeagueDaoTest {
 		System.out.println("testGetAllLeagues");
 		League league1 = new League(2018, "Winter", "Code A");
 		League league2 = new League(2018, "Winter", "Code B");
-		leagueDao.create(league1);
-		leagueDao.create(league2);
-		List<League> leagues = leagueDao.findAll();
+		leagueDao.createJdbc(2018, "Winter", "Code A");
+		leagueDao.createJdbc(2018, "Winter", "Code B");
+		List<League> leagues = leagueDao.findAllByJdbc();
 		System.out.println("*********");
 		for (League league : leagues) {
 			System.out.println(league.getId() + "." + "Year:" + league.getYear() + ", Season:" + league.getSeason()
@@ -52,11 +52,10 @@ public class LeagueDaoTest {
 		}
 	}
 	@Test
-	public void getLeague() {
+	public void getLeague() throws Exception {
 		System.out.println("getLeague");
-		League input = new League(2018,"Spring","APP");
-		leagueDao.create(input);
-		List<League> leagues = leagueDao.findAll();
+		leagueDao.createJdbc(2018, "Spring", "APP");
+		List<League> leagues = leagueDao.findAllByJdbc();
 		int id = leagues.get(0).getId();
 		League output = leagueDao.get(id);
 		System.out.println("Output Season:"+output.getSeason());
@@ -65,9 +64,8 @@ public class LeagueDaoTest {
 	@Test
 	public void getLeagueByYearAndSeason() throws Exception {
 		System.out.println("getLeagueByYearAndSeason");
-		League input = new League(2019,"Summer","Java Team");
-		leagueDao.create(input);
-		List<League> leagues = leagueDao.findAll();
+		leagueDao.createJdbc(2019,"Summer","Java Team");
+		List<League> leagues = leagueDao.findAllByJdbc();
 		int year = leagues.get(0).getYear();
 		String season = leagues.get(0).getSeason();
 		
@@ -78,8 +76,7 @@ public class LeagueDaoTest {
 	@Test
 	public void updateLeague() {
 		System.out.println("updateLeague");
-		League input = new League(2018,"Spring","APP");
-		leagueDao.create(input);
+		leagueDao.createJdbc(2018, "Spring", "APP");
 		int afterYear=2019;
 		leagueDao.updateByYear(afterYear);
 

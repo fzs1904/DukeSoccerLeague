@@ -1,9 +1,11 @@
 package duke.soccer.dao.impl;
 
+import org.springframework.stereotype.Repository;
+
 import duke.soccer.dao.PlayerDao;
 import duke.soccer.model.Player;
 import duke.soccer.utils.JpaUtils;
-
+@Repository
 public class PlayerDaoImpl implements PlayerDao{
 	//CRUD
 	//create

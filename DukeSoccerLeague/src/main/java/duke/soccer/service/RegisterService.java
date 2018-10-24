@@ -1,21 +1,21 @@
 package duke.soccer.service;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import duke.soccer.dao.RegisterDao;
 import duke.soccer.dao.impl.RegisterDaoImpl;
 import duke.soccer.model.League;
 import duke.soccer.model.Player;
-import duke.soccer.service.exception.ObjectNotFoundException;
 import duke.soccer.utils.JpaUtils;
 
-
+@Service
 public class RegisterService {
+	@Autowired
    	private RegisterDao registerDao;
+   	@Autowired
     private LeagueService leagueSrv;
+   	@Autowired
     private PlayerService playerSrv;
     
     public RegisterService() {
